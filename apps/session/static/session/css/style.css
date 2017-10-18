@@ -1,0 +1,18 @@
+#left{
+    display: inline-block;
+    width: 300px;
+    height: 800px;
+    vertical-align: top;
+}
+#mid{
+    display: inline-block;
+    width: 2px;
+    height: 800px;
+    background-color: black;
+}
+#right{
+    display: inline-block;
+    width: 300px;
+    height: 800px;
+    vertical-align: top;
+}

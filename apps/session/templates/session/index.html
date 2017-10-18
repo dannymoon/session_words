@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Session Words</title>
+        {% load static %}
+    <link rel="stylesheet" href="{% static 'session/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+    <!-- <link rel="stylesheet" style="text/css" href="style.css"> -->
+</head>
+<body>
+    <div id="left">
+        <form action="/left" method="post">
+            {% csrf_token %}
+            <label for="textbox">Add a new word</label> <br>
+            <input type="text" name="textbox"> <br>
+            <label for="choose">Choose color</label> <br>
+            <input type="radio" name="color" value="red" >Red <br>
+            <input type="radio" name="color" value="green" >Green  <br>
+            <input type="radio" name="color" value="blue" >Blue <br>
+            <input type="hidden" name="Big" value="15">
+            <input type="checkbox" name="Big" value="25"> show in BIG fonts! <br>
+            <input id="submit" type="submit" name="submit" value="Add to Session">
+        </form>
+    </div>
+    <div id="mid"></div>
+    <div id="right">
+        <form action="/right" method="post">
+            {% csrf_token %}
+            <input type="submit" name="clear" value="Clear Session">
+        </form>
+        
+            {% for data in request.session.all_inputs %}
+            <h3 style="color:{{data.color}}; font-size: {{data.font}}px">{{data.word}} - added on {{data.time}}</h3>
+            {% endfor %}
+    </div>
+</body>
+</html>
